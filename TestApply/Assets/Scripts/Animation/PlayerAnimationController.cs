@@ -11,7 +11,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     private BalanceService _balanceService;
     private SkinTypeModel _skinTypeModel;
-    private GameObject _currentSkin;
 
     protected SkinTypesDatabase _skinTypesDatabase;
 
@@ -79,7 +78,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void SwitchMesh(ESkinType skinType) 
     {
-        Destroy(_currentSkin);
         _skinTypeModel = _skinTypesDatabase.GetSkinTypeModel(skinType);
         _mesh.sharedMesh = _skinTypeModel.SkinMesh;
     }

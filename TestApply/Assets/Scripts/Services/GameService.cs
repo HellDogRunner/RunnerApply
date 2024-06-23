@@ -18,13 +18,13 @@ public class GameService : MonoBehaviour
         _uiManager = uIManager;
         _playerMovementController = playerMovementController;
         _playerAnimationController = playerAnimationController;
-        _balanceSerivce.OnBalanceChanged += Loose;
-        _finishLevel.OnLevelFinished += Win;
+        _balanceSerivce.OnBalanceChanged += LooseGame;
+        _finishLevel.OnLevelFinished += WinGame;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && IsGameLive == false)
+        if (Input.GetMouseButton(0) && IsGameLive == false)
         {
             IsGameLive = true;
             _playerMovementController.IsAbleToMove(true);
@@ -34,7 +34,7 @@ public class GameService : MonoBehaviour
         }
     }
 
-    private void Loose(int balance) 
+    private void LooseGame(int balance) 
     {
         if (balance <= 0)
         {
@@ -45,7 +45,7 @@ public class GameService : MonoBehaviour
         }
     }
 
-    private void Win()
+    private void WinGame()
     {
         IsGameLive = false;
         _uiManager.ShowWinScreen();
@@ -55,7 +55,7 @@ public class GameService : MonoBehaviour
 
     private void OnDestroy()
     {
-        _balanceSerivce.OnBalanceChanged -= Loose;
-        _finishLevel.OnLevelFinished -= Win;
+        _balanceSerivce.OnBalanceChanged -= LooseGame;
+        _finishLevel.OnLevelFinished -= WinGame;
     }
 }

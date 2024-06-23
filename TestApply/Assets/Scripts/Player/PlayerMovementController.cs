@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
@@ -9,20 +7,18 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Transform _transformToMove;
 
-    private float horizontalInput;
     private bool isMoving;
 
     private Vector3 _forwardDirection;
-    private Vector3 _horizontalDirection;
 
     const float rotationPerSecond_c = 90 / 1f;
     private float amountRotated;  
     private bool rotateToLeft;
     private bool rotateToRight;
 
-    private Touch curTouch;
+    private Touch _currentTouch;
 
-    private Vector3 newPos;
+    private Vector3 _newPos;
 
     private void FixedUpdate()
     {
@@ -33,21 +29,20 @@ public class PlayerMovementController : MonoBehaviour
         }
         if (Input.touchCount > 0)
         {
-            curTouch = Input.GetTouch(0);
-            if (curTouch.phase == TouchPhase.Moved)
+            _currentTouch = Input.GetTouch(0);
+            if (_currentTouch.phase == TouchPhase.Moved)
             {
-                float newX = curTouch.deltaPosition.x * _horizontalSpeed * Time.deltaTime;
+                float newX = _currentTouch.deltaPosition.x * _horizontalSpeed * Time.deltaTime;
 
-                newPos = _transformToMove.localPosition;
+                _newPos = _transformToMove.localPosition;
 
-                newPos.x += newX;
+                _newPos.x += newX;
 
-                newPos.x = Mathf.Clamp(newPos.x, -1, 1);
-                _transformToMove.localPosition = newPos;
+                _newPos.x = Mathf.Clamp(_newPos.x, -1, 1);
+                _transformToMove.localPosition = _newPos;
 ;
             }
         }
-
         if (rotateToRight)
         {
             RotateToRight();
@@ -92,12 +87,6 @@ public class PlayerMovementController : MonoBehaviour
             rotateToRight = false;
         }
     }
-
-    //private void Update()
-    //{
-    //    horizontalInput = Input.GetAxis("Horizontal");
-    //}
-
     public void IsAbleToMove(bool isAble) 
     {
         isMoving = isAble;

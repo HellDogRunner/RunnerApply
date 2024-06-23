@@ -14,5 +14,4 @@ namespace Scripts.Skins
 
         public ESkinType PrimaryKey => SkinType;
     }
-
 }

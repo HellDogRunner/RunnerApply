@@ -46,6 +46,7 @@ public class BalanceService : MonoBehaviour
     {
         _playerAnimationController = playerAnimationController;
     }
+
     public void ChangeBalance(string PickUpType) 
     {
         switch (PickUpType)
