@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98f2e0c5a56239408d54c5c5150a7db, type: 3}
+  m_Name: SkinTypessDatabase
+  m_EditorClassIdentifier: 
+  _data:
+  - SkinType: 5
+    SkinMesh: {fileID: -6129067494882945614, guid: 6dd4414d0ce516f4fa3c6e551eaa0c00,
+      type: 3}
+  - SkinType: 10
+    SkinMesh: {fileID: -4399381563841598653, guid: 693d801bb5885a148a9e87ecf0033e01,
+      type: 3}
+  - SkinType: 15
+    SkinMesh: {fileID: 8669875273024017111, guid: ace7b8fc13c524d47a954df1904c0627,
+      type: 3}
+  - SkinType: 30
+    SkinMesh: {fileID: 9016324113835709476, guid: 6dd4414d0ce516f4fa3c6e551eaa0c00,
+      type: 3}
+  - SkinType: 40
+    SkinMesh: {fileID: -1818810689560967479, guid: ace7b8fc13c524d47a954df1904c0627,
+      type: 3}
