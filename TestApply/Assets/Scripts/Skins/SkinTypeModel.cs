@@ -11,6 +11,9 @@ namespace Scripts.Skins
         [Space]
         [Header("Mesh")]
         public Mesh SkinMesh;
+        [Space]
+        [Header("Description")]
+        public string Description;
 
         public ESkinType PrimaryKey => SkinType;
     }

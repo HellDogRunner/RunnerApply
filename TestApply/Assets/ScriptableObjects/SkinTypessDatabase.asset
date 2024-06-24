@@ -16,15 +16,20 @@ MonoBehaviour:
   - SkinType: 5
     SkinMesh: {fileID: -6129067494882945614, guid: 6dd4414d0ce516f4fa3c6e551eaa0c00,
       type: 3}
+    Description: "\u0411\u0440\u043E\u0434\u044F\u0433\u0430"
   - SkinType: 10
     SkinMesh: {fileID: -4399381563841598653, guid: 693d801bb5885a148a9e87ecf0033e01,
       type: 3}
+    Description: "\u0411\u0435\u0434\u043D\u044B\u0439"
   - SkinType: 15
     SkinMesh: {fileID: 8669875273024017111, guid: ace7b8fc13c524d47a954df1904c0627,
       type: 3}
+    Description: "\u0421\u0440\u0435\u0434\u043D\u0438\u0439 \u043A\u043B\u0430\u0441\u0441"
   - SkinType: 30
     SkinMesh: {fileID: 9016324113835709476, guid: 6dd4414d0ce516f4fa3c6e551eaa0c00,
       type: 3}
+    Description: "\u0411\u0438\u0437\u043D\u0435\u0441\u043C\u0435\u043D"
   - SkinType: 40
     SkinMesh: {fileID: -1818810689560967479, guid: ace7b8fc13c524d47a954df1904c0627,
       type: 3}
+    Description: "\u041E\u043B\u0438\u0433\u0430\u0440\u0445"

@@ -11,14 +11,16 @@ public class PlayerAnimationController : MonoBehaviour
 
     private BalanceService _balanceService;
     private SkinTypeModel _skinTypeModel;
+    private BalanceBar _balanceBar;
 
     protected SkinTypesDatabase _skinTypesDatabase;
 
     [Inject]
-    private void Construct(BalanceService balanceService, SkinTypesDatabase skinTypesDatabase)
+    private void Construct(BalanceService balanceService, SkinTypesDatabase skinTypesDatabase, BalanceBar balanceBar)
     {
         _balanceService = balanceService;
         _skinTypesDatabase = skinTypesDatabase;
+        _balanceBar = balanceBar;
         _balanceService.OnStateChanged += TransformAnimation;
     }
 
@@ -55,18 +57,23 @@ public class PlayerAnimationController : MonoBehaviour
         {
             case States.Poor:
                 SwitchMesh(ESkinType.Poor);
+                _balanceBar.UpperBarText.text = GetSkinType(ESkinType.Poor).Description;
                 break;
             case States.Base:
                 SwitchMesh(ESkinType.Base);
+                _balanceBar.UpperBarText.text = GetSkinType(ESkinType.Base).Description;
                 break;
             case States.Buisiness:
                 SwitchMesh(ESkinType.Buisiness);
+                _balanceBar.UpperBarText.text = GetSkinType(ESkinType.Buisiness).Description;
                 break;
             case States.Cocktail:
                 SwitchMesh(ESkinType.Cocktail);
+                _balanceBar.UpperBarText.text = GetSkinType(ESkinType.Cocktail).Description;
                 break;
             case States.Middle:
                 SwitchMesh(ESkinType.Middle);
+                _balanceBar.UpperBarText.text = GetSkinType(ESkinType.Middle).Description;
                 break;
         }
     }
@@ -78,8 +85,13 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void SwitchMesh(ESkinType skinType) 
     {
-        _skinTypeModel = _skinTypesDatabase.GetSkinTypeModel(skinType);
+        _skinTypeModel = GetSkinType(skinType);
         _mesh.sharedMesh = _skinTypeModel.SkinMesh;
+    }
+
+    private SkinTypeModel GetSkinType(ESkinType skinType) 
+    {
+        return _skinTypesDatabase.GetSkinTypeModel(skinType);
     }
 
     private void OnDestroy()

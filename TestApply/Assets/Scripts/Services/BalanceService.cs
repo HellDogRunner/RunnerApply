@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -22,6 +23,8 @@ public class BalanceService : MonoBehaviour
     [SerializeField] private int _currentBalance;
     [SerializeField] private int _maxBalance;
 
+    [SerializeField] private GameObject _FloatingTextPrefab;
+    [SerializeField] private GameObject _floatingTextParent;
     private PlayerAnimationController _playerAnimationController;
 
     private Dictionary<int,States> _data = new Dictionary<int, States>()
@@ -53,10 +56,12 @@ public class BalanceService : MonoBehaviour
         {
             case "Money":
                 _currentBalance += _moneyCost;
+                ShowPositiveFloatingText(_moneyCost);
                 _playerAnimationController.EmitPositiveParticles();
                 break;
             case "Bottle":
                 _currentBalance -= _bottleCost;
+                ShowNegativeFloatingText(_bottleCost);
                 _playerAnimationController.EmitNegativeParticles();
                 if (_currentBalance < 0)
                 {
@@ -65,6 +70,7 @@ public class BalanceService : MonoBehaviour
                 break;
             case "RedDoor":
                 _currentBalance -= _redDoorCost;
+                ShowNegativeFloatingText(_redDoorCost);
                 _playerAnimationController.EmitNegativeParticles();
                 if (_currentBalance < 0)
                 {
@@ -73,6 +79,7 @@ public class BalanceService : MonoBehaviour
                 break;
             case "GreenDoor":
                 _currentBalance += _greenDoorCost;
+                ShowPositiveFloatingText(_greenDoorCost);
                 _playerAnimationController.EmitPositiveParticles();
                 break;
         }
@@ -96,4 +103,15 @@ public class BalanceService : MonoBehaviour
         _lastState = _currentState;
     }
 
+    private void ShowPositiveFloatingText(int changeInBalance) 
+    {
+        var text = Instantiate(_FloatingTextPrefab, _floatingTextParent.transform.position, _floatingTextParent.transform.rotation, _floatingTextParent.transform);
+        text.GetComponent<TMP_Text>().text = "+" + changeInBalance.ToString() + "$";
+    }
+    private void ShowNegativeFloatingText(int changeInBalance)
+    {
+        var text = Instantiate(_FloatingTextPrefab, _floatingTextParent.transform.position, _floatingTextParent.transform.rotation, _floatingTextParent.transform);
+        text.GetComponent<TMP_Text>().color = Color.red;
+        text.GetComponent<TMP_Text>().text = "-" + changeInBalance.ToString() + "$";
+    }
 }
